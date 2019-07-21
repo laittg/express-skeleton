@@ -2,7 +2,7 @@ const path = require('path')
 const glob = require('glob')
 
 const routesDir = path.resolve(__dirname, '../routes')
-const apiPaths = glob.sync(path.resolve(routesDir, './**/!(blueprint).js'))
+const apiPaths = glob.sync(path.resolve(routesDir, '**/*.js'))
 
 var apis = []
 
