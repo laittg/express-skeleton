@@ -1,5 +1,4 @@
 module.exports = {
-  blog: {
-    comment: require('../schemas/blog/comment')
-  }
+  child: require('../schemas/family').child,
+  parent: require('../schemas/family').parent
 }

@@ -7,7 +7,7 @@ function BluePrint (config) {
 
 BluePrint.prototype.helper = require('./helpers')
 
-BluePrint.prototype.schema = require('./schemas')
+BluePrint.prototype.db = require('./db')
 
 module.exports = function newAPI (config) {
   return new BluePrint(config)
