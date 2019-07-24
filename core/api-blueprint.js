@@ -5,9 +5,11 @@ function BluePrint (config) {
   this.router = express.Router()
 }
 
-BluePrint.prototype.helper = require('./helpers')
+BluePrint.prototype.appConfig = require('./config')
 
 BluePrint.prototype.db = require('./db')
+
+BluePrint.prototype.helper = require('./helpers')
 
 module.exports = function newAPI (config) {
   return new BluePrint(config)
