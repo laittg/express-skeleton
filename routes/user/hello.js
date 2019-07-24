@@ -6,7 +6,7 @@ const config = {
 
 }
 
-var api = require('../../core/api-blueprint')(config)
+var api = require('../../core/controller')(config)
 
 api.router.get('/:name', function (req, res, next) {
   res.status(200).send(api.helper.hello(req.params.name))
