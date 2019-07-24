@@ -1,8 +1,16 @@
 var mongoose = require('mongoose')
 
+var config = require('./config')
+var schema = require('./schemas')
+
 mongoose.plugin(require('../db-plugins/sample'))
 
-var schema = require('./schemas')
+mongoose.connect(config.db.mongodb, config.db.options, err => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+})
 
 module.exports = {
   mongoose,
