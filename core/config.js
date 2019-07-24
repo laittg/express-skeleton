@@ -11,7 +11,8 @@ var appConfig = {
 const configDir = path.resolve(__dirname, `../config/${appConfig.env}`)
 
 if (!fs.existsSync(configDir)) {
-  throw new Error(`Config dir not existed: ${configDir}`)
+  console.error(`Config dir not existed: ${configDir}`)
+  process.exit(1)
 }
 
 const configFiles = glob.sync(path.resolve(configDir, '**/*.js'))
