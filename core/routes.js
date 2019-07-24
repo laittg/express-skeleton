@@ -1,16 +1,15 @@
 const path = require('path')
-const glob = require('glob')
 
 const routesDir = path.resolve(__dirname, '../routes')
-const apiPaths = glob.sync(path.resolve(routesDir, '**/*.js'))
 
 var apis = []
 
-apiPaths.map(apiPath => {
-  var api = require(apiPath)
-  api.route = buildRoute(apiPath)
-  apis.push(api)
-})
+require('./helpers')
+  .globList(__dirname, '../routes', '**/*.js', apiFile => {
+    var api = require(apiFile)
+    api.route = buildRoute(apiFile)
+    apis.push(api)
+  })
 
 function buildRoute (apiPath) {
   var route = apiPath
