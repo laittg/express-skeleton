@@ -9,6 +9,8 @@ Controller.prototype.appConfig = require('./config')
 
 Controller.prototype.db = require('./db')
 
+Controller.prototype.debug = require('./debug')
+
 Controller.prototype.helper = require('./helpers')
 
 module.exports = function newAPI (config) {

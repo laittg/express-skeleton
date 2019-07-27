@@ -1,5 +1,6 @@
 const path = require('path')
 const globList = require('./helpers').globList
+const debug = require('./debug')
 
 var appConfig = {
 
@@ -22,10 +23,14 @@ appConfig.onload = function (callback) {
 var preload = require(`../config/${appConfig.env}/preload`)
 
 preload().then(() => {
-  globList(__dirname, `../config/${appConfig.env}`, '*.js', configFile => {
+  debug('Config preload completed')
+
+  globList(__dirname, `../config/${appConfig.env}`, '!(preload).js', configFile => {
     var configName = path.parse(configFile).name
     appConfig[configName] = require(configFile)
+    debug('Load config.', configName)
   })
+
   // check if onload callback is registered
   var onloadcb = setInterval(() => {
     if (!appConfig._onload) return

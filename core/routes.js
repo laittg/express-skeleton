@@ -1,5 +1,5 @@
 const path = require('path')
-
+const debug = require('./debug')
 const routesDir = path.resolve(__dirname, '../routes')
 
 var apis = []
@@ -9,6 +9,7 @@ require('./helpers')
     var api = require(apiFile)
     api.route = buildRoute(apiFile)
     apis.push(api)
+    debug('Route registered', api.route)
   })
 
 function buildRoute (apiPath) {

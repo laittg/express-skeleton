@@ -5,8 +5,7 @@
  */
 
 var config = require('../core/config')
-var packageName = require('../package.json').name
-var debug = require('debug')(packageName)
+var debug = require('../core/debug')
 var http = require('http')
 var server, port
 
