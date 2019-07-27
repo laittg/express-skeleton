@@ -6,7 +6,8 @@
 
 var app = require('../app')
 var config = require('../core/config')
-var debug = require('debug')('express-skeleton:server')
+var packageName = require('../package.json').name
+var debug = require('debug')(packageName)
 var http = require('http')
 
 /**
