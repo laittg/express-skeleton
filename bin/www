@@ -4,32 +4,45 @@
  * Module dependencies.
  */
 
-var app = require('../app')
 var config = require('../core/config')
 var packageName = require('../package.json').name
 var debug = require('debug')(packageName)
 var http = require('http')
+var server, port
 
 /**
- * Get port from environment and store in Express.
+ * Load full config then start server
  */
 
-var port = normalizePort(config.server.port)
-app.set('port', port)
+config.onload(start)
 
-/**
- * Create HTTP server.
- */
+function start () {
+  var app = require('../app')
 
-var server = http.createServer(app)
+  /**
+   * Get port from environment and store in Express.
+   */
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+  port = normalizePort(config.server.port)
+  app.set('port', port)
 
-server.listen(port)
-server.on('error', onError)
-server.on('listening', onListening)
+  /**
+   * Create HTTP server.
+   */
+
+  server = http.createServer(app)
+
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+
+  server.listen(port)
+  server.on('error', onError)
+  server.on('listening', function () {
+    onListening()
+    config.afterload()
+  })
+}
 
 /**
  * Normalize a port into a number, string, or false.

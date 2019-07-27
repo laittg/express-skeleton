@@ -1,5 +1,5 @@
 module.exports = {
-  mongodb: 'mongodb://localhost:27017/FirstClass',
+  mongodb: process.env.MONGODB_CONNECTION_STRING,
   options: {
     useNewUrlParser: true,
     autoIndex: true
