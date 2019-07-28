@@ -34,8 +34,8 @@ preload().then(() => {
   // check if onload callback is registered
   var onloadcb = setInterval(() => {
     if (!appConfig._onload) return
-    appConfig._onload()
     clearInterval(onloadcb)
+    appConfig._onload()
   }, 100)
 })
 
