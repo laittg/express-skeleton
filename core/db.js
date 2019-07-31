@@ -19,6 +19,8 @@ require('./helpers')
     debug('Load db-plugin', pluginFile)
   })
 
+// Configuration Over Convention
+
 module.exports = {
   mongoose,
   Child: mongoose.model('Child', schema.child),
