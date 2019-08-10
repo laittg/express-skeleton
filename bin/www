@@ -16,6 +16,8 @@ var server, port
 config.onload(start)
 
 function start () {
+  require('../core/services')
+
   var app = require('../app')
 
   /**
