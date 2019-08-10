@@ -1,3 +1,4 @@
+// Configuration Over Convention
 
 module.exports = {
   appConfig: require('./config'),
