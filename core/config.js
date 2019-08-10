@@ -39,6 +39,9 @@ preload().then(() => {
     clearInterval(onloadcb)
     appConfig._onload()
   }, 100)
+}).catch(error => {
+  console.error(error)
+  process.exit(1)
 })
 
 module.exports = appConfig
