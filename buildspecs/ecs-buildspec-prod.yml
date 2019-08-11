@@ -29,7 +29,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - docker build -t $REPOSITORY_URI:latest --build-arg environment=$STAGE .
+      - docker build -t $REPOSITORY_URI:latest --build-arg environment=$STAGE --build-arg aws_region=$AWS_DEFAULT_REGION .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
       - echo Build completed on `date`
 

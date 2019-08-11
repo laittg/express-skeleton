@@ -5,6 +5,7 @@ ARG environment=development
 ARG debug=express-skeleton
 ARG appdir=/var/www/express
 ARG port=3000
+ARG aws_region=us-west-2
 
 # Install global npm packages
 RUN npm i -g pm2
@@ -26,6 +27,7 @@ ADD . ${appdir}
 RUN echo "NODE_ENV=${environment}" > .env
 RUN echo "DEBUG=${debug}" >> .env
 RUN echo "PORT=${port}" >> .env
+RUN echo "AWS_DEFAULT_REGION=${aws_region}" >> .env
 
 # Build log
 RUN echo "Docker build completed on" $(date) >> ./public/.build
