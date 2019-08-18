@@ -27,7 +27,7 @@ ADD . ${appdir}
 RUN echo "NODE_ENV=${environment}" > .env
 RUN echo "DEBUG=${debug}" >> .env
 RUN echo "PORT=${port}" >> .env
-RUN echo "AWS_DEFAULT_REGION=${aws_region}" >> .env
+RUN echo "AWS_REGION=${aws_region}" >> .env
 
 # Build log
 RUN echo "Docker build completed on" $(date) >> ./public/.build
